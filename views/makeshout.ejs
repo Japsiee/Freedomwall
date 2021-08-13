@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body class='bg-dark'>
+	<%- include('./partials/relative-navbar.ejs') %>
+	<div class="container-lg p-5 p-lg-5" style='min-height: 70vh;'>
+		<form action="/shout" method="POST" accept-charset="utf-8">
+			<div class="mb-3">
+			  <label for="author" class="form-label fw-bold text-warning">Author</label>
+			  <input type="text" class="form-control" id="shoutAuthor" name='author' placeholder="Author's name" required autofocus>
+			</div>
+			<div class="mb-3">
+			  <label for="title" class="form-label fw-bold text-warning">Title</label>
+			  <input type="text" class="form-control" id="shoutTitle" name='title' placeholder="Title" required>
+			</div>
+			<div class="mb-3">
+			  <label for="body" class="form-label fw-bold text-warning">Body</label>
+			  <textarea class="form-control" id="shoutBody" name='body' rows="3" required></textarea>
+			</div>
+			<div class='d-flex justify-content-center align-items-center py-3'>
+				<button type='submit' class="btn btn-outline-warning btn-lg" id='shoutBtn' disabled>Submit Shout</button>
+			</div>
+		</form>
+	</div>
+
+<%- include('./partials/footer.ejs') %>
+<script>
+	const shoutBtn = document.querySelector('#shoutBtn');
+	const shoutAuthor = document.querySelector('#shoutAuthor');
+	const shoutTitle = document.querySelector('#shoutTitle');
+	const shoutBody = document.querySelector('#shoutBody');
+
+	window.addEventListener('keyup', () => {
+		if (shoutAuthor.value.length > 0 && shoutTitle.value.length > 0 && shoutBody.value.length > 0) {
+			shoutBtn.removeAttribute('disabled');
+		} else {
+			shoutBtn.setAttribute('disabled', 'disabled');
+		}
+	})
+</script>
+</body>
+</html>

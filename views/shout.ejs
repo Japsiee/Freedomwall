@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body class='bg-dark'>
+	<%- include('./partials/relative-navbar.ejs') %>
+	<div class="container-fluid p-5 p-lg-5">
+		<div class="row g-5 d-flex justify-content-center align-items-center">
+			<% if (shouts.length > 0) { %>
+			<% shouts.forEach(shout => { %>
+			<div class=" col-12 col-md-6">
+				<a href="/shout/<%= shout.id %>" class='text-decoration-none shout'>
+				<div class='text-light'>
+					<h1 class="display-5 text-custom-0 fw-bold"><%= shout.title %></h1>
+					<p class="lead border-5 border-start border-warning px-4 mx-2 px-lg-5 mx-lg-5" style='text-align: justify'><%= shout.body %></p>
+					<p class="lead fw-normal fst-italic text-custom-2"><%= shout.createdAt %>
+					<br>
+					<p class="lead fw-normal fst-italic text-custom-2">View details . . .</p>
+				</div>
+				</a>
+			</div>
+			<% }) %>
+			<% } else { %>
+				<h1 class="display-5">No Shout to Display</h1>
+			<% } %>
+		</div>
+	</div>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

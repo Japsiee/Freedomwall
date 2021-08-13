@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body class='bg-dark'>
+	<div class="jumbotron p-3 px-5">
+		<a href="/shout" class='btn btn-lg btn-warning'>Back <i class="bi bi-arrow-return-left"></i></a>
+	</div>
+	<div class="jumbotron p-3 px-5 bg-warning text-white">
+		<h1 class="display-1 text-center"><%= singleShout.title %></h1>
+	</div>
+	<div class="container-lg p-5 p-lg-5 bg-dark">
+		<p class="lead text-white"><%= singleShout.body %></p>
+		<p class="lead fw-bold text-info">~ <%= singleShout.author %></p>
+		<p class="lead fw-normal fst-italic text-warning"><%= singleShout.createdAt %></p>
+
+		<hr class='my-4 border'>
+
+		<form action="/shout/<%= singleShout.id %>" method="POST" accept-charset="utf-8" id='commentForm'>
+			<div class="mb-3">
+			  <label for="comment" class="form-label fw-bold text-warning fs-3">Comment</label>
+			  <input type="hidden" name="toId" value='<%= singleShout.id %>'>
+			  <textarea class="form-control" id="body" name='body' rows="3" required autofocus></textarea>
+			</div>
+			  <button type='submit' class="btn btn-md btn-warning text-dark" id='commentBtn' disabled><i class="bi bi-chat-square-fill"></i> Submit Comment</button>
+		</form>
+
+		<hr class='my-4 border'>
+
+		<h1 class="display-3 fw-bold text-center text-custom-0">Comments <i class="bi bi-chat-square-fill"></i></h1>
+
+		<% comments.filter(comment => { %>
+			<% if (comment.toId == singleShout.id) { %>
+				<div class='text-warning py-3 px-5 my-3 border-0 border-start border-5 border-warning'>
+					<p class="lead fs-3 fw-normal"><%= comment.id %></p>
+					<p class="lead text-white"><%= comment.body %></p>
+				</div>	
+			<% } %>
+		<% }) %>
+	</div>
+<%- include('./partials/footer.ejs') %>
+<script>
+	const commentBtn = document.querySelector('#commentBtn');
+	const commentBody = document.querySelector('#body');
+
+	commentBody.addEventListener('keyup', () => {
+		if (commentBody.textLength > 0) {
+			commentBtn.removeAttribute('disabled');
+		} else {
+			commentBtn.setAttribute('disabled', 'disabled');
+		}
+	})
+</script>
+</body>
+</html>

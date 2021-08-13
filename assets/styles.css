@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+	--ff1: 'Karla', sans-serif;
+	--c1: #F7FD04;
+	--c2: #F9B208;
+}
+
+.ff-1 {
+	font-family: var(--ff1);
+}
+
+* {
+	font-family: var(--ff1);
+	outline: none;
+}
+
+.shout {
+	display: block;
+	padding: 0px;
+	border-radius: 5px;
+}
+
+.shout:hover {
+	transition-duration: .2s;
+	opacity: .5;
+}
+
+.bg-custom-0, .btn-custom-0 {
+	background: linear-gradient(270deg, var(--c1), var(--c2));
+}
+
+.bg-custom-1, .btn-custom-1 {
+	background: var(--c1);
+}
+
+.bg-custom-2, .btn-custom-2 {
+	background: var(--c2);
+}
+
+.text-custom-0 {
+	background: linear-gradient(270deg, var(--c1), var(--c2));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+.text-custom-1 {
+	color: var(--c1);
+}
+
+.text-custom-2 {
+	color: var(--c2);
+}
