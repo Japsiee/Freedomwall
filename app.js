@@ -14,7 +14,7 @@ const connectToMongoDB = async () => {
 	await myMongo()
 
 	.then(connection => {
-		app.listen(process.env.PORT || 2424, () => {
+		app.listen(process.env.PORT || 3000, () => {
 			console.log('Listening');
 		})
 	})
