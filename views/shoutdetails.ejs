@@ -2,13 +2,13 @@
 <html>
 <%- include('./partials/head.ejs') %>
 <body class='bg-dark'>
-	<div class="jumbotron p-3 px-5">
-		<a href="/shout" class='btn btn-lg btn-warning'>Back <i class="bi bi-arrow-return-left"></i></a>
+	<div class="jumbotron p-3">
+		<a href="/shout" class='btn btn-warning'>Back <i class="bi bi-arrow-return-left"></i></a>
 	</div>
 	<div class="jumbotron p-3 px-5 bg-warning text-white">
-		<h1 class="display-1 text-center"><%= singleShout.title %></h1>
+		<h1 class="display-4 text-center"><%= singleShout.title %></h1>
 	</div>
-	<div class="container-lg p-5 p-lg-5 bg-dark">
+	<div class="container-lg p-3 p-md-5 bg-dark">
 		<p class="lead text-white"><%= singleShout.body %></p>
 		<p class="lead fw-bold text-info">~ <%= singleShout.author %></p>
 		<p class="lead fw-normal fst-italic text-warning"><%= singleShout.createdAt %></p>
@@ -30,9 +30,9 @@
 
 		<% comments.filter(comment => { %>
 			<% if (comment.toId == singleShout.id) { %>
-				<div class='text-warning py-3 px-5 my-3 border-0 border-start border-5 border-warning'>
-					<p class="lead fs-3 fw-normal"><%= comment.id %></p>
-					<p class="lead text-white"><%= comment.body %></p>
+				<div class='text-warning ps-4 border-0 border-start border-5 border-warning'>
+					<p class="lead fs-5 fw-normal"><%= comment.id %></p>
+					<p class="lead fs-5 text-white"><%= comment.body %></p>
 				</div>	
 			<% } %>
 		<% }) %>
